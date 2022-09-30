@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAT FACTS</title>
+</head>
+<body>
+    <h1 class="setup"></h1>
+    <h2 class="punchline"></h2>
+    <script>
+        request = new XMLHttpRequest()
+
+        request.open("GET", "https://catfact.ninja/fact")
+
+        request.send()
+
+        request.onload = function(){
+            if (request.status == 200){
+                data = JSON.parse(request.responseText)
+                console.log(data)
+                document.querySelector(".setup").innerHTML ="Setup: " + data.setup
+                document.querySelector(".punchline").innerHTML ="Punch line: " + data.punchline
+            }else if (request.status ==404){
+                console.log("No Records Found")
+            }
+        }
+    
+    </script>
+    
+</body>
+</html>
